@@ -86,6 +86,7 @@ class Config(BaseModel):
     admins: List[Union[int, str]] = []
     forwards: List[Forward] = []
     show_forwarded_from: bool = False
+    include_sender_id: bool = False
     mode: int = 0  # 0: live, 1:past
     live: LiveSettings = LiveSettings()
     past: PastSettings = PastSettings()
