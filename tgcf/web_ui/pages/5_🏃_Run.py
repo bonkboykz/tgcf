@@ -37,6 +37,9 @@ if check_password(st):
         CONFIG.show_forwarded_from = st.checkbox(
             "Show 'Forwarded from'", value=CONFIG.show_forwarded_from
         )
+        CONFIG.include_sender_id = st.checkbox(
+            "Include Sender Id", value=CONFIG.include_sender_id
+        )
         mode = st.radio("Choose mode", ["live", "past"], index=CONFIG.mode)
         if mode == "past":
             CONFIG.mode = 1
@@ -51,6 +54,7 @@ if check_password(st):
             CONFIG.live.delete_sync = st.checkbox(
                 "Sync when a message is deleted", value=CONFIG.live.delete_sync
             )
+
 
         if st.button("Save"):
             write_config(CONFIG)

@@ -40,6 +40,10 @@ async def send_message(recipient: EntityLike, tm: "TgcfMessage") -> Message:
         )
         return message
     tm.message.text = tm.text
+
+    if CONFIG.include_sender_id:
+        tm.message.text = f"Sender Id: {tm.sender_id}\n\n{tm.text}"
+
     return await client.send_message(recipient, tm.message, reply_to=tm.reply_to)
 
 
